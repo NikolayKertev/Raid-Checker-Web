@@ -5,8 +5,7 @@
 }
 
 html {
-    font: 16px/1.5;
-    font-family: monospace;
+    font: 16px/1.5 monospace;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -17,12 +16,14 @@ body {
 header {
     background-color: #1e1e1e;
     border: 1px solid rgba(0, 0, 0, 0.5);
+    position: relative;
 }
 
 footer {
     background-color: #1e1e1e;
     border: 1px solid rgba(0, 0, 0, 0.5);
-    padding: 0.4em 0;
+    padding: 0.4em 1em;
+    text-align: center;
 
     p {
         font-size: 1.3em;
@@ -39,6 +40,20 @@ header>p {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+a>img {
+    position: absolute;
+    width: 5%;
+    aspect-ratio: 1/1;
+    padding: 1em;
+    align-self: center;
+
+}
+
+p>a {
+    text-decoration: none;
+}
+
 
 main {
     display: flex;
@@ -73,14 +88,16 @@ main {
 }
 
 .center {
-    width: 50%;
+    width: 55%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .left,
 .right {
-    width: 16%;
+    width: 12%;
     background-image: linear-gradient(rgba(0, 0, 0, 0.2),
-            rgba(0, 0, 0, 0.2)), url("pugsters.png");
+            rgba(0, 0, 0, 0.2)), url("newBanner.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -100,10 +117,47 @@ main {
     border-radius: 4px;
 
     p {
+
         color: bisque;
         background-color: rgba(200, 200, 200, 0.1);
         border-radius: 4px;
         margin: 0.5em;
         padding: 0.5em;
     }
+}
+
+.button-check {
+    width: 10%;
+    padding: 0.3em;
+    margin: 1em;
+    align-self: center;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    background-color: rgba(200, 200, 200, 0.1);
+    color: bisque;
+}
+
+.button-check[disabled='disabled'] {
+    background-color: rgb(150, 0, 0);
+}
+
+.button-check[disabled='disabled']:hover {
+    background-color: rgb(50, 0, 0);
+}
+
+.button-check:hover {
+    background-color: rgba(200, 200, 200, 0.3);
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+#errors {
+    font-size: 1.5em;
+    width: 100%;
+    color: rgba(255, 0, 255, 0.7);
+    display: none;
+    margin-top: auto;
 }
