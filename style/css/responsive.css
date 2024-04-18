@@ -12,25 +12,29 @@
     html {
         font-size: 16px;
     }
+
+    .meme-gif {
+
+        width: 40%;
+    }
 }
 
 @media (width <=1000px) {
     html {
         font-size: 14px;
     }
+
+    .meme-gif {
+
+        width: 50%;
+    }
 }
 
 @media (width <=800px) {
     .button {
-        width: 10em;
-        padding: 1em;
-        margin: 1em;
-        align-self: center;
-        border: 2px solid rgba(0, 0, 0, 0.5);
-        border-radius: 4px;
-        background-color: rgba(200, 200, 200, 0.1);
-        color: bisque;
-        font-size: 1em;
+        width: 12em;
+        padding: 1.5em;
+        margin: 1.5em;
     }
 
     .left,
@@ -42,6 +46,11 @@
         width: 90%;
         margin: 0 auto;
     }
+
+    .meme-gif {
+
+        width: 60%;
+    }
 }
 
 @media (width <=650px) {
@@ -50,20 +59,8 @@
     }
 }
 
-@media (width <=550px) {
-    html {
-        font-size: 10px;
-    }
-}
-
 @media (width <=450px) {
     html {
-        font-size: 9px;
-    }
-}
-
-@media (width <=400px) {
-    html {
-        font-size: 8px;
+        font-size: 10px;
     }
 }
