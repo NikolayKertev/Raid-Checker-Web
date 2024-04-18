@@ -12,9 +12,7 @@ const eventsIDs = [];
 const playersArray = [];
 const playersInstancesArray = [];
 
-setTimeout(() => getData(), 500);
-setTimeout(() => createPlayers(), 3000);
-setTimeout(() => getDupedPlayers(), 5000);
+fetchData();
 
 function getData() {
     fetch(baseUrl)
@@ -28,47 +26,57 @@ function getData() {
 
                 eventsIDs.push(eventID);
             })
+
         })
+        .then(createPlayers)
+        .then(getDupedPlayers);
 }
 
-function createPlayers() {
-    eventsIDs.forEach(eventID => {
-        fetch(`${compositionUrl}/${eventID}`)
-            .then(response => {
-                return response.json()
+async function createPlayers() {
+    for (eventID of eventsIDs) {
+        try {
+            const res = await fetch(`${compositionUrl}/${eventID}`);
+            const data = await res.json();
+
+            const characterArray = data.raidDrop;
+    
+            characterArray.forEach(character => {
+                const playerName = character.name;
+                const characterSpec = character.spec;
+    
+                let player = {};
+                player[playerName] = characterSpec;
+    
+                playersArray.push(player);
             })
-            .then(data => {
-                const charArray = data.raidDrop;
-
-                charArray.forEach(character => {
-                    const playerName = character.name;
-                    const characterSpec = character.spec;
-
-                    let player = {};
-                    player[playerName] = characterSpec;
-
-                    playersArray.push(player);
-
-                })
-            })
-            .catch(err => {
-                errorArea.style.display = 'block';
-                errorArea.textContent = 'Some of the events have less than 1 players insert. Those events are ignored.'
-            })
-    })
+        } catch (error) {
+            errorArea.style.display = 'block';
+            errorArea.textContent = 'Some of the events have less than 1 players insert into. Those events are ignored.'
+        }
+    }
 }
 
 function getDupedPlayers() {
+    let counter = 0;
+
     playersArray.forEach(player => {
         let name = Object.keys(player);
         let spec = Object.values(player);
+        counter++;
 
         if (specMap[spec] !== undefined) {
             spec = specMap[spec];
         }
 
+        if (counter > 175) {
+            errorArea.style.display = 'block';
+            errorArea.textContent = 'Error. Auto reload in 2 seconds.'
 
-        if (name != 'null') {
+            setTimeout(() => reloadButtonElement.click(), 2000);
+            return;
+        }
+
+        if (name !== 'null') {
             const currentInstance = new Player(name);
             currentInstance.Push(spec);
 
@@ -89,14 +97,22 @@ function getDupedPlayers() {
 
 checkButtonElement.addEventListener('click', (e) => {
     if (playersInstancesArray.length < 1) {
-        setTimeout(() => getData(), 500);
-        setTimeout(() => createPlayers(), 3000);
-        setTimeout(() => getDupedPlayers(), 5000);
+        fetchData();
     }
 
     dupesArea.innerHTML = '';
-    
-    const dupedPlayers = playersInstancesArray.filter(player => player.duped == true);
+
+    const dupedPlayers = playersInstancesArray.filter(player => player.duped === true);
+
+    if (dupedPlayers.length === 0) {
+        const pElement = document.createElement('p');
+        pElement.textContent = 'You have no duped players!';
+        pElement.style.color = 'green';
+
+        dupesArea.appendChild(pElement);
+
+        return;
+    }
 
     dupedPlayers.forEach(player => {
         const text = player.ToStringDuped();
@@ -106,6 +122,8 @@ checkButtonElement.addEventListener('click', (e) => {
 
         dupesArea.appendChild(pElement);
     })
+
+    checkButtonElement.setAttribute('Disabled', 'Disabled');
 })
 
 reloadButtonElement.addEventListener('click', (e) => {
@@ -119,10 +137,12 @@ reloadButtonElement.addEventListener('click', (e) => {
     checkButtonElement.setAttribute('disabled', 'disabled');
     reloadButtonElement.setAttribute('disabled', 'disabled');
 
-    setTimeout(() => getData(), 500);
-    setTimeout(() => createPlayers(), 3000);
-    setTimeout(() => getDupedPlayers(), 5000);
+    fetchData();
 })
+
+function fetchData() {
+    setTimeout(() => getData(), 500);
+}
 
 class Player {
     constructor(name) {
@@ -168,7 +188,7 @@ const specMap = {
     'Restoration1': 'Restoration Shaman',
     'Guardian': 'Feral (Tank)',
     'Protection1': 'Protection Paladin',
-    'Protection':'Protection Warrior',
+    'Protection': 'Protection Warrior',
     'Blood Tank': 'Blood DK (Tank)',
     'Fury': 'Fury Warrior',
     'Retribution': 'Retribution Paladin',
@@ -189,5 +209,5 @@ const specMap = {
     'Discipline': 'Discipline Priest',
     'Restoration': 'Restoration Druid',
     'Holy': 'Holy Priest',
-    }
+}
 

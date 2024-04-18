@@ -58,7 +58,7 @@ p>a {
 main {
     display: flex;
     padding: 2em 1em;
-    height: 100vh;
+    height: 100%;
 
     background-color: #1e1e1eee;
     justify-content: space-between;
@@ -90,12 +90,12 @@ main {
 .center {
     width: 55%;
     display: flex;
-    flex-wrap: wrap;
 }
 
 .left,
 .right {
     width: 12%;
+    height: 40vmax;
     background-image: linear-gradient(rgba(0, 0, 0, 0.2),
             rgba(0, 0, 0, 0.2)), url("newBanner.png");
     background-repeat: no-repeat;
@@ -107,7 +107,6 @@ main {
 }
 
 .dupesOutput {
-
     width: 100%;
     align-self: center;
 
@@ -117,6 +116,8 @@ main {
     border-radius: 4px;
 
     p {
+/*         max-width: 50%;
+        overflow-wrap: break-word; */
 
         color: bisque;
         background-color: rgba(200, 200, 200, 0.1);
