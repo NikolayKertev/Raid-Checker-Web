@@ -1,67 +1,69 @@
+@media (width > 650px) {
+    .button[disabled='disabled']:hover {
+        background-color: rgb(50, 0, 0);
+    }
+    
+    .button:hover {
+        background-color: rgba(200, 200, 200, 0.3);
+    }
+}
+
 @media (width <=1400px) {
     html {
         font-size: 16px;
     }
 }
 
-@media (width <=1200px) {
+@media (width <=1000px) {
     html {
         font-size: 14px;
     }
 }
 
-@media (width <=1000px) {
-    html {
-        font-size: 12px;
-    }
-}
-
 @media (width <=800px) {
-    html {
-        font-size: 10px;
+    .button {
+        width: 10em;
+        padding: 1em;
+        margin: 1em;
+        align-self: center;
+        border: 2px solid rgba(0, 0, 0, 0.5);
+        border-radius: 4px;
+        background-color: rgba(200, 200, 200, 0.1);
+        color: bisque;
+        font-size: 1em;
     }
 
     .left,
     .right {
-        width: 12em;
-        height: 50vh;
+        display: none;
+    }
+
+    .center {
+        width: 90%;
+        margin: 0 auto;
     }
 }
 
 @media (width <=650px) {
     html {
-        font-size: 8px;
+        font-size: 12px;
     }
 }
 
 @media (width <=550px) {
     html {
-        font-size: 6px;
-    }
-
-    .left,
-    .right {
-        width: 11em;
-        height: 50vh;
+        font-size: 10px;
     }
 }
 
 @media (width <=450px) {
-    .left,
-    .right {
-        width: 12em;
-        height: 50vh;
+    html {
+        font-size: 9px;
     }
 }
 
-@media (width <=350px) {
+@media (width <=400px) {
     html {
-        font-size: 5px;
-    }
-
-    .left,
-    .right {
-        width: 11em;
-        height: 50vh;
+        font-size: 8px;
     }
 }

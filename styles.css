@@ -153,17 +153,18 @@ main {
     background-color: rgb(150, 0, 0);
 }
 
-.button[disabled='disabled']:hover {
-    background-color: rgb(50, 0, 0);
-}
-
-.button:hover {
-    background-color: rgba(200, 200, 200, 0.3);
-}
-
 .buttons {
     display: flex;
     justify-content: center;
+}
+
+.meme-gif {
+    display: none;
+    width: 30%;
+    align-self: center;
+    margin-bottom: 1em;
+    border-radius: 3px;
+    box-shadow: 0em 0em 0.5em rgba(0, 0, 0, 1);
 }
 
 #errors {

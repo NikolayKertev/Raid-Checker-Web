@@ -6,6 +6,7 @@ const checkButtonElement = document.querySelector('.check');
 const reloadButtonElement = document.querySelector('.reload');
 const dupesArea = document.querySelector('.dupesOutput');
 const errorArea = document.getElementById('errors');
+const memeGifElement = document.querySelector('.meme-gif');
 
 const eventsIDs = [];
 
@@ -124,6 +125,7 @@ checkButtonElement.addEventListener('click', (e) => {
     })
 
     checkButtonElement.setAttribute('Disabled', 'Disabled');
+    memeGifElement.style.display = 'block';
 })
 
 reloadButtonElement.addEventListener('click', (e) => {
@@ -133,6 +135,8 @@ reloadButtonElement.addEventListener('click', (e) => {
 
     errorArea.style.display = 'none';
     dupesArea.innerHTML = '';
+
+    memeGifElement.style.display = 'none';
 
     checkButtonElement.setAttribute('disabled', 'disabled');
     reloadButtonElement.setAttribute('disabled', 'disabled');
