@@ -1,18 +1,20 @@
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 html {
-    font: 16px/1.5 monospace;
+    font: 18px/1.5 monospace;
     -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
 }
 
 body {
     font: inherit;
+    min-height: 100vh;
 }
-
+ 
 header {
     background-color: #1e1e1e;
     border: 1px solid rgba(0, 0, 0, 0.5);
@@ -29,6 +31,8 @@ footer {
         font-size: 1.3em;
         color: rgba(255, 255, 255, 0.8);
     }
+
+    margin-top: auto;
 }
 
 header>p {
@@ -43,7 +47,7 @@ header>p {
 
 a>img {
     position: absolute;
-    width: 5%;
+    width: 6.5em;
     aspect-ratio: 1/1;
     padding: 1em;
     align-self: center;
@@ -57,10 +61,8 @@ p>a {
 
 main {
     display: flex;
-    padding: 2em 1em;
-    height: 100%;
+    padding: 1em 1em;
 
-    background-color: #1e1e1eee;
     justify-content: space-between;
 
     h1 {
@@ -68,13 +70,23 @@ main {
         color: bisque;
         padding: 0.2em;
         margin-bottom: 0.3em;
-        width: 50%;
+        width: 8.5em;
         align-self: center;
 
         background-color: #1e1e1e;
         border: 1px solid rgba(0, 0, 0, 0.5);
         border-radius: 4px;
     }
+}
+
+.body-div {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    min-height: 100vh;
+    justify-content: space-between;
+    background-color: #1e1e1eee;
+    /* padding: 0; */
 }
 
 .container {
@@ -94,8 +106,9 @@ main {
 
 .left,
 .right {
-    width: 12%;
-    height: 40vmax;
+    width: 10em;
+    height: 80vh;
+
     background-image: linear-gradient(rgba(0, 0, 0, 0.2),
             rgba(0, 0, 0, 0.2)), url("newBanner.png");
     background-repeat: no-repeat;
@@ -116,9 +129,6 @@ main {
     border-radius: 4px;
 
     p {
-/*         max-width: 50%;
-        overflow-wrap: break-word; */
-
         color: bisque;
         background-color: rgba(200, 200, 200, 0.1);
         border-radius: 4px;
@@ -127,8 +137,8 @@ main {
     }
 }
 
-.button-check {
-    width: 10%;
+.button {
+    width: 5em;
     padding: 0.3em;
     margin: 1em;
     align-self: center;
@@ -136,17 +146,18 @@ main {
     border-radius: 4px;
     background-color: rgba(200, 200, 200, 0.1);
     color: bisque;
+    font-size: 1em;
 }
 
-.button-check[disabled='disabled'] {
+.button[disabled='disabled'] {
     background-color: rgb(150, 0, 0);
 }
 
-.button-check[disabled='disabled']:hover {
+.button[disabled='disabled']:hover {
     background-color: rgb(50, 0, 0);
 }
 
-.button-check:hover {
+.button:hover {
     background-color: rgba(200, 200, 200, 0.3);
 }
 

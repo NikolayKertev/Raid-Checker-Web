@@ -6,43 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raid Checker</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsive.css">
 </head>
 
 <body>
-    <header>
-        <a href="#">
-            <img src="icon.png" alt="">
-        </a>
-        <p><a href="#">Raid Checker</a></p>
-    </header>
-
-    <main>
-        <div class="left content">
-        </div>
-
-        <div class="center content">
-            <h1>Current dupes:</h1>
-            <section class="container">
-
-                <div class="dupesOutput">
-                    <p>Click the "Check" button to load in all the dupes.</p>
-                </div>
-                <div class="buttons">
-                    <input type="button" value="Check" class="button-check check" disabled="disabled">
-                    <input type="button" value="Reload" class="button-check reload" disabled="disabled">
-                </div>
-            </section>
-            <h1 id="errors"></h1>
-        </div>
-        <div class="right content">
-        </div>
-
-
-    </main>
-
-    <footer>
-        <p><a href="https://raid-helper.dev/">Raid Helper</a></p>
-    </footer>
+    <div class="body-div">
+        <header>
+            <a href="#">
+                <img src="icon.png" alt="">
+            </a>
+            <p><a href="#">Raid Checker</a></p>
+        </header>
+    
+        <main>
+            <div class="left content">
+            </div>
+    
+            <div class="center content">
+                <h1>Current dupes:</h1>
+                <section class="container">
+    
+                    <div class="dupesOutput">
+                        <p>Click the "Check" button to load in all the dupes.</p>
+                    </div>
+                    <div class="buttons">
+                        <input type="button" value="Check" class="button check" disabled="disabled">
+                        <input type="button" value="Reload" class="button reload" disabled="disabled">
+                    </div>
+                </section>
+                <h1 id="errors"></h1>
+            </div>
+            <div class="right content">
+            </div>
+    
+    
+        </main>
+    
+        <footer>
+            <p><a href="https://raid-helper.dev/">Raid Helper</a></p>
+        </footer>
+    </div>
     <script src="script.js"></script>
 </body>
 
