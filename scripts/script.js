@@ -77,7 +77,7 @@ function getDupedPlayers() {
             return;
         }
 
-        if (name !== 'null') {
+        if (name != 'null') {
             const currentInstance = new Player(name);
             currentInstance.Push(spec);
 
