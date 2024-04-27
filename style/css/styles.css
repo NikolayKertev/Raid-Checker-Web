@@ -14,7 +14,7 @@ body {
     font: inherit;
     min-height: 100vh;
 }
- 
+
 header {
     background-color: #1e1e1e;
     border: 1px solid rgba(0, 0, 0, 0.5);
@@ -51,13 +51,11 @@ a>img {
     aspect-ratio: 1/1;
     padding: 1em;
     align-self: center;
-
 }
 
 p>a {
     text-decoration: none;
 }
-
 
 main {
     display: flex;
@@ -86,7 +84,27 @@ main {
     min-height: 100vh;
     justify-content: space-between;
     background-color: #1e1e1eee;
-    /* padding: 0; */
+}
+
+.players-count {
+    display: flex;
+    justify-content: space-between;
+    background-color: #1e1e1eee;
+
+    margin-bottom: 0.5em;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+
+    .characterCount,
+    .playerCount,
+    .dupesCount {
+        color: rgba(220, 220, 200, 0.7);
+    }
+
+    .border {
+        border-right: 1px solid rgba(5, 5, 5, 0.5);
+        border-radius: 3px;
+    }
 }
 
 .container {

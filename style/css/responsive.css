@@ -6,6 +6,10 @@
     .button:hover {
         background-color: rgba(200, 200, 200, 0.3);
     }
+
+    .raid-helper-href:hover {
+        color: rgb(200, 0, 230);
+    }
 }
 
 @media (width <=1400px) {

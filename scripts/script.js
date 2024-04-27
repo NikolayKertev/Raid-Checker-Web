@@ -8,10 +8,15 @@ const dupesArea = document.querySelector('.dupesOutput');
 const errorArea = document.getElementById('errors');
 const memeGifElement = document.querySelector('.meme-gif');
 
+const characterCountElement = document.querySelector('.characterCount');
+const playerCountElement = document.querySelector('.playerCount');
+const dupesCountElement = document.querySelector('.dupesCount');
+
 const eventsIDs = [];
 
 const playersArray = [];
 const playersInstancesArray = [];
+let dupesCount = 0;
 
 fetchData();
 
@@ -40,14 +45,14 @@ async function createPlayers() {
             const data = await res.json();
 
             const characterArray = data.raidDrop;
-    
+
             characterArray.forEach(character => {
                 const playerName = character.name;
                 const characterSpec = character.spec;
-    
+
                 let player = {};
                 player[playerName] = characterSpec;
-    
+
                 playersArray.push(player);
             })
         } catch (error) {
@@ -94,12 +99,28 @@ function getDupedPlayers() {
 
     checkButtonElement.removeAttribute('Disabled');
     reloadButtonElement.removeAttribute('Disabled');
+
+    const playersLenth = playersArray.filter(player => {
+        let name = Object.keys(player);
+
+        if (name != 'null') {
+            return player;
+        }
+
+        return;
+    }).length;
+
+    characterCountElement.textContent = `Total Chars: ${playersLenth}`;
+    playerCountElement.textContent = `Total players: ${playersInstancesArray.length}`;
+    dupesCountElement.textContent = `Total dupes:`;
 }
 
 checkButtonElement.addEventListener('click', (e) => {
     if (playersInstancesArray.length < 1) {
         fetchData();
     }
+
+    dupesCount = 0;
 
     dupesArea.innerHTML = '';
 
@@ -126,6 +147,7 @@ checkButtonElement.addEventListener('click', (e) => {
 
     checkButtonElement.setAttribute('Disabled', 'Disabled');
     memeGifElement.style.display = 'block';
+    dupesCountElement.textContent = `Total dupes: ${dupesCount}`;
 })
 
 reloadButtonElement.addEventListener('click', (e) => {
@@ -141,6 +163,9 @@ reloadButtonElement.addEventListener('click', (e) => {
     checkButtonElement.setAttribute('disabled', 'disabled');
     reloadButtonElement.setAttribute('disabled', 'disabled');
 
+    characterCountElement.textContent = `Total Chars:`;
+    playerCountElement.textContent = `Total players:`;
+    dupesCountElement.textContent = `Total dupes:`;
     fetchData();
 })
 
@@ -175,15 +200,16 @@ class Player {
         const dupedSpecs = [];
 
         for (const spec in this.specs) {
-
-
             if (this.specs[spec] > 1) {
                 dupedSpecs.push(spec);
             }
         }
 
-        let text = `${this.name}: ${dupedSpecs} - ${this.specCount - Object.values(this.specs).length} times.`;
+        const dupedCount = this.specCount - Object.values(this.specs).length;
 
+        let text = `${this.name}: ${dupedSpecs.join(', ')} - ${dupedCount} times.`;
+
+        dupesCount += dupedCount;
         return text;
     }
 }
@@ -214,4 +240,3 @@ const specMap = {
     'Restoration': 'Restoration Druid',
     'Holy': 'Holy Priest',
 }
-
