@@ -1,6 +1,7 @@
 /* window.addEventListener("load", refreshPage); */
-const baseUrl = 'https://neptune.fibrecat.org/pugsters-api-gateway/';
-const compositionUrl = 'https://api.codetabs.com/v1/proxy/?quest=https://raid-helper.dev/api/raidplan';
+const proxyUrl = 'https://corsproxy.io/?';
+const baseUrl = proxyUrl + 'https://raid-helper.dev/api/v3/servers/1028302685423808603/events';
+const compositionUrl = proxyUrl + 'https://raid-helper.dev/api/raidplan';
 
 const checkButtonElement = document.querySelector('.check');
 const reloadButtonElement = document.querySelector('.reload');
@@ -21,7 +22,12 @@ let dupesCount = 0;
 fetchData();
 
 function getData() {
-    fetch(baseUrl)
+    fetch(baseUrl, {
+        method: 'get', 
+        headers: {
+            'Authorization': 'uDPHu47TpOFVs81FSmzPSwE57GbCyYzIj1r2Y9K3',
+        }
+    })
         .then(response => response.json())
         .then(data => {
             const eventsMetaInfo = Object.values(data);
