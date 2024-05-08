@@ -1,7 +1,7 @@
 /* window.addEventListener("load", refreshPage); */
 const proxyUrl = 'https://corsproxy.io/?';
 const baseUrl = proxyUrl + 'https://raid-helper.dev/api/v3/servers/1028302685423808603/events';
-const compositionUrl = proxyUrl + 'https://raid-helper.dev/api/raidplan';
+const compositionUrl = 'https://api.codetabs.com/v1/proxy/?quest=https://raid-helper.dev/api/raidplan';
 
 const checkButtonElement = document.querySelector('.check');
 const reloadButtonElement = document.querySelector('.reload');
