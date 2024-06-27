@@ -1,5 +1,5 @@
 /* window.addEventListener("load", refreshPage); */
-const proxyUrl = 'https://corsproxy.io/?';
+const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 const baseUrl = proxyUrl + 'https://raid-helper.dev/api/v3/servers/1028302685423808603/events';
 const compositionUrl = 'https://api.codetabs.com/v1/proxy/?quest=https://raid-helper.dev/api/raidplan';
 
@@ -25,7 +25,7 @@ function getData() {
     fetch(baseUrl, {
         method: 'get', 
         headers: {
-            'Authorization': 'uDPHu47TpOFVs81FSmzPSwE57GbCyYzIj1r2Y9K3',
+            'Authorization':'DyXkAhwdJL7NqdGiE3S7q2s4bgf3X1RWIBFv3h6U',
         }
     })
         .then(response => response.json())
