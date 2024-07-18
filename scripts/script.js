@@ -225,7 +225,7 @@ const specMap = {
     'Guardian': 'Feral (Tank)',
     'Protection1': 'Protection Paladin',
     'Protection': 'Protection Warrior',
-    'Blood Tank': 'Blood DK (Tank)',
+    'Blood_Tank': 'Blood DK',
     'Fury': 'Fury Warrior',
     'Retribution': 'Retribution Paladin',
     'Unholy_DPS': 'Unholy DK',
